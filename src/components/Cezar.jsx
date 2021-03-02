@@ -58,14 +58,14 @@ export default class Cezar extends Component {
         <Space direction="horizontal">
           <Slider
             className="sliderNumber"
-            min={-10}
-            max={10}
+            min={-32}
+            max={32}
             onChange={this.onChangeSlider}
             value={typeof inputValue === 'number' ? inputValue : 0}
           />
           <InputNumber
-            min={-10}
-            max={10}
+            min={-32}
+            max={32}
             style={{ margin: '0 16px' }}
             value={inputValue}
             onChange={this.onChangeSlider}

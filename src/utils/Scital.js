@@ -1,5 +1,6 @@
 export const skital = (strIn, rowCount) => {
   let str = '' + strIn;
+  let strLenFirst = str.length;
   let colCount = Math.floor((str.length - 1) / rowCount) + 1;
   let arr = str.split('');
   str = '';

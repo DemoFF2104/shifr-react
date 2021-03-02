@@ -117,33 +117,7 @@ export const PolybiusFunc = (strIn) => {
       strShifr += indChar[i].symbol;
     }
   }
-  // for (let i = 0; i < coor.length; ) {
-  //   let vert = parseInt(coor[i]);
-  //   let gor = parseInt(coor[i + 1]);
 
-  //   if (lang) {
-  //     if (indSpace[strShifr.length]) strShifr += indSpace[strShifr.length];
-  //     else {
-  //       strShifr += RuSqDown[gor][vert];
-  //       i = i + 2;
-  //     }
-  //   } else {
-  //     if (indSpace[strShifr.length]) strShifr += indSpace[strShifr.length];
-  //     else {
-  //       console.log(gor);
-  //       console.log(vert);
-
-  //       strShifr += EnSqDown[gor][vert];
-  //       i = i + 2;
-  //     }
-  //   }
-  // }
-  // for (let i = strShifr.length; i < indSpace.length; i++) {
-  //   if (indSpace[i]) {
-  //     let g = indSpace[i];
-  //     strShifr += g;
-  //   }
-  // }
   console.log(strShifr);
   return [strShifr, indSpace, indChar];
 };
@@ -158,12 +132,6 @@ export const dePolybius = (strIn, indSpace, indChar) => {
   let horizontal = [];
   let lang = true;
   arr.map((value, ind) => {
-    // RuSqUp.map((val, index) => {
-    //   if (val.includes(value)) {
-    //     vertical.push(val.indexOf(value));
-    //     horizontal.push(index);
-    //   }
-    // });
     RuSqDown.map((val, index) => {
       if (val.includes(value.toLowerCase())) {
         vertical.push(val.indexOf(value.toLowerCase()));
@@ -247,11 +215,5 @@ export const dePolybius = (strIn, indSpace, indChar) => {
         }
       }
   }
-  // for (let i = strShifr.length; i < indSpace.length; i++) {
-  //   if (indSpace[i]) {
-  //     let g = indSpace[i];
-  //     strShifr += g;
-  //   }
-  // }
   return strShifr;
 };

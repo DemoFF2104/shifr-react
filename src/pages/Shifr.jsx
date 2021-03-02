@@ -23,7 +23,6 @@ export default class Home extends Component {
       <Layout style={{ minHeight: '100vh' }}>
         <MySider />
         <Layout className="site-layout">
-          <Header className="site-layout-background header-shifr" style={{ padding: 0 }} />
           <Content style={{ margin: '0 16px' }}>
             <Route exact path="/Shifr/Atbash" component={Atbash} />
             <Route exact path="/Shifr/Scital" component={Scital} />

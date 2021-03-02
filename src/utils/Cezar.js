@@ -37,13 +37,22 @@ export const deCezar = (strIn, count) => {
   let arr = str.split('');
   str = '';
   arr.map((value, index) => {
-    if (engUp.indexOf(value) !== -1) value = engUp[(engUp.indexOf(value) - count) % engUp.length];
-    else if (engDown.indexOf(value) !== -1)
-      value = engDown[(engDown.indexOf(value) - count) % engDown.length];
-    else if (rusUp.indexOf(value) !== -1) {
-      value = rusUp[(rusUp.indexOf(value) - count) % rusUp.length];
+    if (engUp.indexOf(value) !== -1) {
+      if ((engUp.indexOf(value) - count) % engUp.length < 0) {
+        value = engUp[((engUp.indexOf(value) - count) % engUp.length) + engUp.length];
+      } else value = engUp[(engUp.indexOf(value) - count) % engUp.length];
+    } else if (engDown.indexOf(value) !== -1) {
+      if ((engDown.indexOf(value) - count) % engDown.length < 0) {
+        value = engDown[((engDown.indexOf(value) - count) % engDown.length) + engDown.length];
+      } else value = engDown[(engDown.indexOf(value) - count) % engDown.length];
+    } else if (rusUp.indexOf(value) !== -1) {
+      if ((rusUp.indexOf(value) - count) % rusUp.length < 0) {
+        value = rusUp[((rusUp.indexOf(value) - count) % rusUp.length) + rusUp.length];
+      } else value = rusUp[(rusUp.indexOf(value) - count) % rusUp.length];
     } else if (rusDown.indexOf(value) !== -1) {
-      value = rusDown[(rusDown.indexOf(value) - count) % rusDown.length];
+      if ((rusDown.indexOf(value) - count) % rusDown.length < 0) {
+        value = rusDown[((rusDown.indexOf(value) - count) % rusDown.length) + rusDown.length];
+      } else value = rusDown[(rusDown.indexOf(value) - count) % rusDown.length];
     }
     str += value;
   });
