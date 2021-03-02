@@ -15,7 +15,7 @@ const { SubMenu } = Menu;
 export default class MySider extends Component {
   state = {
     collapsed: false,
-    items: ['Atbash', 'Scital', 'Polybe', 'Cezar'],
+    items: ['Atbash', 'Scital', 'Polybius', 'Cezar'],
   };
 
   onCollapse = (collapsed) => {
@@ -32,9 +32,6 @@ export default class MySider extends Component {
           <Menu.Item key="1" icon={<PieChartOutlined />}>
             <Link to={'/'}>Главная</Link>
           </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
-            Option 2
-          </Menu.Item>
           <SubMenu key="sub1" icon={<FileOutlined />} title="Модуль 1. Лабы 1-4">
             {items.map((name, index) => (
               <Menu.Item key={index + 3}>
@@ -42,13 +39,6 @@ export default class MySider extends Component {
               </Menu.Item>
             ))}
           </SubMenu>
-          <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-            <Menu.Item key="6">Team 1</Menu.Item>
-            <Menu.Item key="8">Team 2</Menu.Item>
-          </SubMenu>
-          <Menu.Item key="9" icon={<FileOutlined />}>
-            Files
-          </Menu.Item>
         </Menu>
       </Sider>
     );

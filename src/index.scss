@@ -20,6 +20,10 @@ code {
 .site-layout .site-layout-background {
   background: #fff;
 }
+h1 {
+  color: #fff;
+  font-size: 20px;
+}
 .ant-card-body {
   padding: 0;
   width: 100%;
@@ -35,16 +39,23 @@ code {
   transition: transform 1s;
   position: relative;
   perspective: 500px;
-  background: rgba(22, 57, 101, 0.65);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(1.5px);
   -webkit-backdrop-filter: blur(1.5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+.scene {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
 
 .MyCard {
-  &.is-flipped {
+  .is-flipped {
     transform: rotateY(180deg);
   }
 }
@@ -64,12 +75,13 @@ code {
 
 .card__face--front {
   transform: rotateY(0deg);
-  background: rgba(22, 57, 101, 0.65);
+  background: rgba(22, 57, 101, 0.85);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(1.5px);
   -webkit-backdrop-filter: blur(1.5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  backface-visibility: hidden;
 }
 
 .card__face--back {
@@ -80,23 +92,37 @@ code {
   -webkit-backdrop-filter: blur(1.5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  align-content: center;
+  line-height: 15px;
+  font-size: 15px;
+  color: #000;
 }
 
 .center-block {
-  margin: 0 auto;
-  padding: 50px;
+  padding: 20px 50px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(22, 57, 101, 0.65);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(1.5px);
   -webkit-backdrop-filter: blur(1.5px);
   border-radius: 10px;
-  height: 50%;
+  width: 70vh;
+  margin: 0 auto;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  align-content: center;
 }
 
 .ant-layout-shifr {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+.header-shifr {
+  background-color: #000;
 }
 .sliderNumber {
   width: 150px;

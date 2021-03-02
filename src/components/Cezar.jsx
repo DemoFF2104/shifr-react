@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Input } from 'antd';
 import { Button } from 'antd';
 import { Switch, Space, Slider, InputNumber } from 'antd';
-import { skital, deSkital } from '../utils/Scital';
+import { cezarFunc, deCezar } from '../utils/Cezar';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
 const { TextArea } = Input;
-export default class Scital extends Component {
+export default class Cezar extends Component {
   state = {
     value: '',
     checked: true,
-    inputValue: 1,
+    inputValue: 0,
   };
 
   onChange = ({ target: { value } }) => {
@@ -25,15 +25,12 @@ export default class Scital extends Component {
     });
   };
   onClick = () => {
-    console.log(skital(this.state.value, 5));
     let tmpvalue;
     if (this.state.checked) {
-      console.log(this.state.inputValue);
-      console.log(skital(this.state.value, this.state.inputValue));
-      tmpvalue = skital(this.state.value, this.state.inputValue);
+      tmpvalue = cezarFunc(this.state.value, this.state.inputValue);
     } else {
       console.log(this.state.inputValue);
-      tmpvalue = deSkital(this.state.value, this.state.inputValue);
+      tmpvalue = deCezar(this.state.value, this.state.inputValue);
     }
     this.setState({ value: tmpvalue });
   };
@@ -42,7 +39,7 @@ export default class Scital extends Component {
     const { value } = this.state;
     return (
       <Space direction="vertical" align="center" className="center-block">
-        <h1>Шифр Сцитала</h1>
+        <h1>Шифр Цезаря</h1>
         <TextArea
           style={{ width: 300, height: 200 }}
           value={value}
@@ -61,14 +58,14 @@ export default class Scital extends Component {
         <Space direction="horizontal">
           <Slider
             className="sliderNumber"
-            min={1}
-            max={20}
+            min={-10}
+            max={10}
             onChange={this.onChangeSlider}
             value={typeof inputValue === 'number' ? inputValue : 0}
           />
           <InputNumber
-            min={1}
-            max={20}
+            min={-10}
+            max={10}
             style={{ margin: '0 16px' }}
             value={inputValue}
             onChange={this.onChangeSlider}
