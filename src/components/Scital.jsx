@@ -25,14 +25,10 @@ export default class Scital extends Component {
     });
   };
   onClick = () => {
-    console.log(skital(this.state.value, 5));
     let tmpvalue;
     if (this.state.checked) {
-      console.log(this.state.inputValue);
-      console.log(skital(this.state.value, this.state.inputValue));
       tmpvalue = skital(this.state.value, this.state.inputValue);
     } else {
-      console.log(this.state.inputValue);
       tmpvalue = deSkital(this.state.value, this.state.inputValue);
     }
     this.setState({ value: tmpvalue });

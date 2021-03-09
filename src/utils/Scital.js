@@ -2,6 +2,7 @@ export const skital = (strIn, rowCount) => {
   let str = '' + strIn;
   let strLenFirst = str.length;
   let colCount = Math.floor((str.length - 1) / rowCount) + 1;
+  console.log(colCount);
   let arr = str.split('');
   str = '';
   function listToMatrix(list, elementsPerSubArray) {
@@ -18,7 +19,7 @@ export const skital = (strIn, rowCount) => {
     for (i = matrix.length - 1; i < rowCount; i++) {
       if (!matrix[i]) matrix[i] = [];
       for (let j = 0; j < colCount; j++) {
-        if (!matrix[i][j]) matrix[i][j] = '*';
+        if (!matrix[i][j]) matrix[i][j] = 'ұ';
       }
     }
     return matrix;
@@ -36,6 +37,7 @@ export const deSkital = (strIn, rowCountDe) => {
   let str = '' + strIn;
   let strLenFirst = str.length;
   let colCount = Math.floor((str.length - 1) / rowCount) + 1;
+  console.log(colCount);
   let arr = str.split('');
   str = '';
   function listToMatrix(list, elementsPerSubArray) {
@@ -49,9 +51,9 @@ export const deSkital = (strIn, rowCountDe) => {
       }
       matrix[k].push(list[i]);
     }
-    for (i = matrix.length - 1; i < colCount; i++) {
+    for (i = 0; i < colCount; i++) {
       for (let j = 0; j < rowCount; j++) {
-        if (matrix[i][j] === '*') matrix[i][j] = '';
+        if (matrix[i][j] === 'ұ') matrix[i][j] = '';
       }
     }
     return matrix;
