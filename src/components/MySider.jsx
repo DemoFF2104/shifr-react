@@ -15,7 +15,16 @@ const { SubMenu } = Menu;
 export default class MySider extends Component {
   state = {
     collapsed: false,
-    items: ['Atbash', 'Scital', 'Polybius', 'Cezar'],
+    items: [
+      'Atbash',
+      'Scital',
+      'Polybius',
+      'Cezar',
+      'Vizhener',
+      'Gronsfeld',
+      'Alberty',
+      'Richelieu',
+    ],
   };
 
   onCollapse = (collapsed) => {

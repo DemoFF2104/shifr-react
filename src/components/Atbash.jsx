@@ -14,6 +14,7 @@ export default class Atbash extends Component {
   onChange = ({ target: { value } }) => {
     this.setState({ value });
   };
+
   onClick = () => {
     const tmpvalue = shifr(this.state.value);
     this.setState({ value: tmpvalue });

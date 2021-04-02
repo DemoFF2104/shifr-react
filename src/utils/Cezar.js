@@ -9,24 +9,28 @@ export const cezarFunc = (strIn, count) => {
   arr.map((value, index) => {
     if (engUp.indexOf(value) !== -1) {
       if (count < 0) {
-        count = (count % engUp.length) + engUp.length;
+        let locCount = (count % engUp.length) + engUp.length;
+        value = engUp[(engUp.indexOf(value) + locCount) % engUp.length];
+      } else {
+        value = engUp[(engUp.indexOf(value) + count) % engUp.length];
       }
-      value = engUp[(engUp.indexOf(value) + count) % engUp.length];
     } else if (engDown.indexOf(value) !== -1) {
       if (count < 0) {
-        count = (count % engDown.length) + engDown.length;
-      }
-      value = engDown[(engDown.indexOf(value) + count) % engDown.length];
+        let locCount = (count % engDown.length) + engDown.length;
+        value = engDown[(engDown.indexOf(value) + locCount) % engDown.length];
+      } else value = engDown[(engDown.indexOf(value) + count) % engDown.length];
     } else if (rusUp.indexOf(value) !== -1) {
       if (count < 0) {
-        count = (count % rusUp.length) + rusUp.length;
-      }
-      value = rusUp[(rusUp.indexOf(value) + count) % rusUp.length];
+        let locCount = (count % rusUp.length) + rusUp.length;
+        value = rusUp[(rusUp.indexOf(value) + locCount) % rusUp.length];
+      } else value = rusUp[(rusUp.indexOf(value) + count) % rusUp.length];
     } else if (rusDown.indexOf(value) !== -1) {
       if (count < 0) {
-        count = (count % rusDown.length) + rusDown.length;
+        let locCount = (count % rusDown.length) + rusDown.length;
+        value = rusDown[(rusDown.indexOf(value) + locCount) % rusDown.length];
+      } else {
+        value = rusDown[(rusDown.indexOf(value) + count) % rusDown.length];
       }
-      value = rusDown[(rusDown.indexOf(value) + count) % rusDown.length];
     }
     str += value;
   });
