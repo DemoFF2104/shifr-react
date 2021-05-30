@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Input } from 'antd';
 import { Button } from 'antd';
 import { Switch, Space } from 'antd';
-import { shifr } from '../utils/Vizhener.js';
+import playfair from '../utils/Playfair.js';
 import classNames from 'classnames';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
 const { TextArea } = Input;
-export default class Vizhener extends Component {
+export default class Playfair extends Component {
   state = {
     value: '',
     keyS: '',
@@ -28,7 +28,7 @@ export default class Vizhener extends Component {
   onChangeKey = ({ target: { value } }) => {
     let Reg6 = /^[A-zА-яЁё]+$/i;
     this.setState({ keyS: value });
-    if (this.state.value.length >= value.length && Reg6.test(value)) {
+    if (Reg6.test(value)) {
       this.setState({ keyErr: false });
     } else {
       this.setState({ keyErr: true });
@@ -40,10 +40,10 @@ export default class Vizhener extends Component {
   onClick = () => {
     let tmpvalue;
     if (this.state.checked) {
-      tmpvalue = shifr(this.state.value, this.state.keyS, 'encrypt');
+      tmpvalue = playfair.encoding(this.state.value, this.state.keyS, 'Английский');
     } else {
       console.log(this.state.inputValue);
-      tmpvalue = shifr(this.state.value, this.state.keyS, 'decrypt');
+      tmpvalue = playfair.decoding(this.state.value, this.state.keyS, 'Английский');
     }
     this.setState({ value: tmpvalue });
   };
@@ -51,7 +51,7 @@ export default class Vizhener extends Component {
     const { value, keyS } = this.state;
     return (
       <Space direction="vertical" align="center" className="center-block">
-        <h1>Шифр Вижинера</h1>
+        <h1>Шифр Плейфера</h1>
         <TextArea
           style={{ width: 300, height: 200 }}
           value={value}

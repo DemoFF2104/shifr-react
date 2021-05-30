@@ -4,6 +4,7 @@ import { Button } from 'antd';
 import { Switch, Space } from 'antd';
 import { shifr } from '../utils/Vizhener.js';
 import classNames from 'classnames';
+import Vernam from '../utils/Vernam';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
 const { TextArea } = Input;
@@ -40,10 +41,10 @@ export default class Vizhener extends Component {
   onClick = () => {
     let tmpvalue;
     if (this.state.checked) {
-      tmpvalue = shifr(this.state.value, this.state.keyS, 'encrypt');
+      tmpvalue = Vernam.coding(this.state.value, this.state.keyS);
     } else {
       console.log(this.state.inputValue);
-      tmpvalue = shifr(this.state.value, this.state.keyS, 'decrypt');
+      tmpvalue = Vernam.coding(this.state.value, this.state.keyS);
     }
     this.setState({ value: tmpvalue });
   };
@@ -51,7 +52,7 @@ export default class Vizhener extends Component {
     const { value, keyS } = this.state;
     return (
       <Space direction="vertical" align="center" className="center-block">
-        <h1>Шифр Вижинера</h1>
+        <h1>Шифр Вернама</h1>
         <TextArea
           style={{ width: 300, height: 200 }}
           value={value}

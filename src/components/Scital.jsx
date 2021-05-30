@@ -50,7 +50,7 @@ export default class Scital extends Component {
         </Button>
         <Switch
           checkedChildren="Зашифровать"
-          unCheckedChildren="Дешифровать"
+          unCheckedChildren="Расшифровать"
           defaultChecked
           onChange={this.onChangeSwitch}
         />

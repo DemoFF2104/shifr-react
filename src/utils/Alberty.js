@@ -7,6 +7,10 @@ var newEngDown = 'abcdefghijklmnopqrstuvwxyz';
 var newRusUp = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ';
 var newRusDown = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
 export const shifr = (strIn, keyIn, keyAIn, mode) => {
+  newEngUp = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  newEngDown = 'abcdefghijklmnopqrstuvwxyz';
+  newRusUp = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ';
+  newRusDown = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
   let str = '' + strIn;
   let key = '' + keyIn;
   let keyA = '' + keyAIn.toLowerCase();
@@ -39,9 +43,9 @@ export const shifr = (strIn, keyIn, keyAIn, mode) => {
     newEngUp = newEngDown.toUpperCase();
   } else {
     newRusDown = keyA + newRusDown;
-    newRusUp = newRusUp.toUpperCase();
+    newRusUp = newRusDown.toUpperCase();
   }
-  console.log(arr);
+  console.log(newRusUp);
   arr.map((value, index) => {
     let KeyCh = arrKey[index >= arrKey.length ? index % arrKey.length : index];
 
@@ -50,18 +54,20 @@ export const shifr = (strIn, keyIn, keyAIn, mode) => {
     let ki;
     if (engUp.indexOf(KeyCh) !== -1) {
       ki = engUp.indexOf(KeyCh);
-      ki = typeof mode !== 'undefined' && mode.indexOf('decrypt') !== -1 ? -ki : ki;
+      ki = typeof mode !== 'undefined' && mode.indexOf('decrypt') !== -1 ? ki : -ki;
     } else if (engDown.indexOf(KeyCh) !== -1) {
       ki = engDown.indexOf(KeyCh);
-      ki = typeof mode !== 'undefined' && mode.indexOf('decrypt') !== -1 ? -ki : ki;
+      ki = typeof mode !== 'undefined' && mode.indexOf('decrypt') !== -1 ? ki : -ki;
     } else if (rusUp.indexOf(KeyCh) !== -1) {
       ki = rusUp.indexOf(KeyCh);
-      ki = typeof mode !== 'undefined' && mode.indexOf('decrypt') !== -1 ? -ki : ki;
+      ki = typeof mode !== 'undefined' && mode.indexOf('decrypt') !== -1 ? ki : -ki;
     } else if (rusDown.indexOf(KeyCh) !== -1) {
       ki = rusDown.indexOf(KeyCh);
-      ki = typeof mode !== 'undefined' && mode.indexOf('decrypt') !== -1 ? -ki : ki;
+      ki = typeof mode !== 'undefined' && mode.indexOf('decrypt') !== -1 ? ki : -ki;
     }
     console.log(ki);
+    console.log(newRusDown);
+    console.log(newRusUp);
     if (mode !== 'undefined' && mode.indexOf('encrypt') !== -1) {
       if (engUp.indexOf(value) !== -1) {
         value = newEngUp[(engUp.length - ki + engUp.indexOf(value)) % engUp.length];

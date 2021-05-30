@@ -2,33 +2,33 @@ import React, { Component } from 'react';
 import { Input } from 'antd';
 import { Button } from 'antd';
 import { Switch, Space } from 'antd';
-import { shifr } from '../utils/Vizhener.js';
+import hill from '../utils/Hill.js';
 import classNames from 'classnames';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
-
+import { Col, Row, Select, DatePicker, AutoComplete, Cascader } from 'antd';
+const { Option } = Select;
 const { TextArea } = Input;
-export default class Vizhener extends Component {
+export default class Hill extends Component {
   state = {
     value: '',
     keyS: '',
     checked: true,
     keyErr: false,
+    language: true,
   };
 
   onChange = ({ target: { value } }) => {
-    let Reg6 = /^[A-zА-яЁё]+$/i;
-    if (value.length >= this.state.keyS.length && Reg6.test(this.state.keyS)) {
-      this.setState({ value });
-      this.setState({ keyErr: false });
-    } else {
-      this.setState({ value });
-      this.setState({ keyErr: true });
-    }
+    let Reg6 = /^[A-zА-яЁё. ?]+$/i;
+    this.setState({ value });
+  };
+  onChangeLanguage = (value) => {
+    if (value == 'Русский') this.setState({ language: true });
+    else if (value == 'Английский') this.setState({ language: false });
   };
   onChangeKey = ({ target: { value } }) => {
-    let Reg6 = /^[A-zА-яЁё]+$/i;
+    let Reg6 = /^[A-zА-яЁё. ?]+$/i;
     this.setState({ keyS: value });
-    if (this.state.value.length >= value.length && Reg6.test(value)) {
+    if (hill.checkKey(value) && Reg6.test(value)) {
       this.setState({ keyErr: false });
     } else {
       this.setState({ keyErr: true });
@@ -40,18 +40,18 @@ export default class Vizhener extends Component {
   onClick = () => {
     let tmpvalue;
     if (this.state.checked) {
-      tmpvalue = shifr(this.state.value, this.state.keyS, 'encrypt');
+      tmpvalue = hill.coding(this.state.value, this.state.keyS, this.state.language);
     } else {
       console.log(this.state.inputValue);
-      tmpvalue = shifr(this.state.value, this.state.keyS, 'decrypt');
+      tmpvalue = hill.encoding(this.state.value, this.state.keyS, this.state.language);
     }
     this.setState({ value: tmpvalue });
   };
   render() {
-    const { value, keyS } = this.state;
+    const { value, keyS, language } = this.state;
     return (
       <Space direction="vertical" align="center" className="center-block">
-        <h1>Шифр Вижинера</h1>
+        <h1>Шифр Хилла</h1>
         <TextArea
           style={{ width: 300, height: 200 }}
           value={value}
@@ -73,7 +73,7 @@ export default class Vizhener extends Component {
           className={classNames({
             labelVis: this.state.keyErr === true,
           })}>
-          Ключ должен быть короче сообщения
+          Длина ключа не является квадратом целого числа
         </p>
         <Button onClick={this.onClick} type="primary" disabled={this.state.keyErr}>
           Выполнить
@@ -84,6 +84,10 @@ export default class Vizhener extends Component {
           defaultChecked
           onChange={this.onChangeSwitch}
         />
+        <Select defaultValue="Русский" onChange={this.onChangeLanguage} style={{ width: 100 }}>
+          <Option value="Русский">Русский</Option>
+          <Option value="Английский">Английский</Option>
+        </Select>
       </Space>
     );
   }

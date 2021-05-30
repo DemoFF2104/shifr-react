@@ -24,6 +24,13 @@ export default class MySider extends Component {
       'Gronsfeld',
       'Alberty',
       'Richelieu',
+      'Freq',
+      'Vernam',
+      'Playfair',
+      'Hill',
+      'Gamm',
+      'Cardanus',
+      'Analyze',
     ],
   };
 
